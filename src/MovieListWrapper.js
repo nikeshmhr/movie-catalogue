@@ -12,6 +12,7 @@ class MovieListWrapper extends React.Component {
 							title={Title}
 							poster={Poster}
 							year={Year}
+							imdbID={id}
 						/>
 					)
 				)}

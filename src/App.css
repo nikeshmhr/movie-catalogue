@@ -23,3 +23,26 @@
     width: 40%;
     min-width: 170px;
 }
+
+.main-detail-wrapper {
+    display: flex;
+}
+
+.detail-wrapper {
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.subtitle {
+    font-weight: 600;
+}
+
+
+.lds-ripple {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}

@@ -2,11 +2,14 @@ import React from "react";
 import MovieListWrapper from "./MovieListWrapper";
 import Search from "./Search";
 import "./Loader.css";
+import { Router, Switch, Route } from "react-router-dom";
+import history from "./router/history";
+import MovieDetail from "./MovieDetail";
 
 export default class App extends React.Component {
 	constructor(props) {
 		super(props);
-		this.state = { searchTerm: "", movies: [], error: "", loading: true };
+		this.state = { searchTerm: "", movies: [], error: "", loading: false };
 	}
 
 	searchHandler(e) {
@@ -59,12 +62,21 @@ export default class App extends React.Component {
 			);
 		return (
 			<div className="container">
-				<Search
-					value={this.state.searchTerm}
-					changeHandler={this.changeHandler.bind(this)}
-					searchHandler={this.searchHandler.bind(this)}
-				/>
-				{viewToRender}
+				<Router history={history}>
+					<Switch>
+						<Route path="/" exact>
+							<Search
+								value={this.state.searchTerm}
+								changeHandler={this.changeHandler.bind(this)}
+								searchHandler={this.searchHandler.bind(this)}
+							/>
+							{viewToRender}
+						</Route>
+						<Route path="/:imdbID" exact>
+							<MovieDetail />
+						</Route>
+					</Switch>
+				</Router>
 			</div>
 		);
 	}
