@@ -1,0 +1,25 @@
+.movie-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+}
+
+.movie {
+    padding: 5px 25px 10px 25px;
+    max-width: 33%;
+    cursor: pointer;
+}
+
+.form {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 10px;
+    height: 100px;
+}
+
+.form>input[type="text"] {
+    width: 40%;
+    min-width: 170px;
+}

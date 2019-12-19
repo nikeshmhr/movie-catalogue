@@ -1,12 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom";
+import "bootstrap/dist/css/bootstrap.min.css";
+import App from "./App";
+import "./App.css";
 
-const Index = () => {
-	return (
-		<div>
-			<p>Hello World!!!</p>
-		</div>
-	);
-};
-
-ReactDOM.render(<Index />, document.getElementById("index"));
+ReactDOM.render(<App />, document.getElementById("index"));
