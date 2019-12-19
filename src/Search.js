@@ -14,6 +14,7 @@ class Search extends React.Component {
 					placeholder="Search movies by name..."
 					value={this.props.value}
 					onChange={e => this.props.changeHandler(e)}
+					autoFocus
 				/>
 			</form>
 		);

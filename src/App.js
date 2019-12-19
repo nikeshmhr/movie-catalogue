@@ -14,9 +14,9 @@ export default class App extends React.Component {
 
 	searchHandler(e) {
 		e.preventDefault();
-		console.log(this.state.searchTerm);
-		this.setState({ error: "", loading: true });
+
 		if (this.state.searchTerm) {
+			this.setState({ error: "", loading: true });
 			// Call api to search movies
 			fetch(
 				`http://www.omdbapi.com/?apikey=c32f98b8&type=movie&s=${this.state.searchTerm}`
