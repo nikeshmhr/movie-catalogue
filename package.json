@@ -4,7 +4,8 @@
 	"description": "Project done for JavaScript developer code challenge.",
 	"main": "index.js",
 	"scripts": {
-		"start": "webpack-dev-server --mode development --open",
+		"start": "node server.js",
+		"dev": "webpack-dev-server --mode development --open",
 		"build": "webpack --mode production"
 	},
 	"repository": {
@@ -28,6 +29,7 @@
 	},
 	"dependencies": {
 		"bootstrap": "^4.4.1",
+		"express": "^4.17.1",
 		"react": "^16.12.0",
 		"react-dom": "^16.12.0",
 		"react-router-dom": "^5.1.2"
