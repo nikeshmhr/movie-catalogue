@@ -16,7 +16,6 @@ class MovieDetail extends React.Component {
 			`http://www.omdbapi.com/?apikey=c32f98b8&type=movie&plot=full&i=${imdbID}`
 		).then(res => {
 			res.json().then(json => {
-				console.log(json);
 				if (json.Response && json.Response === "False") {
 					this.setState({ movie: null });
 				} else {
