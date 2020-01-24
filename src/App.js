@@ -6,16 +6,14 @@ import { Router, Switch, Route } from "react-router-dom";
 import history from "./router/history";
 import MovieDetail from "./MovieDetail";
 import Pagination from "./Pagination";
+import { connect } from "react-redux";
+import { searchMovie } from "./actions";
 
-export default class App extends React.Component {
+class App extends React.Component {
 	constructor(props) {
 		super(props);
 		this.state = {
 			searchTerm: "",
-			movies: [],
-			error: "",
-			loading: false,
-			totalResults: 0,
 			currentPage: 1
 		};
 	}
@@ -30,33 +28,7 @@ export default class App extends React.Component {
 	}
 
 	fetchMovies(pageNo = 1) {
-		this.setState({ error: "", loading: true });
-		// Call api to search movies
-		fetch(
-			`http://www.omdbapi.com/?apikey=c32f98b8&type=movie&s=${this.state.searchTerm}&page=${pageNo}`
-		).then(res => {
-			res.json().then(json => {
-				this.setState({ loading: false });
-
-				if (json.Response === "True") {
-					this.setState({
-						movies: [
-							...json.Search.sort(({ Title: a }, { Title: b }) =>
-								a < b ? -1 : a > b ? 1 : 0
-							)
-						],
-						error: "",
-						totalResults: json.totalResults
-					});
-				} else {
-					this.setState({
-						movies: [],
-						error: json.Error,
-						totalResults: 0
-					});
-				}
-			});
-		});
+		this.props.searchMovie(this.state.searchTerm, pageNo);
 	}
 
 	paginationHandler(pageNo) {
@@ -69,7 +41,7 @@ export default class App extends React.Component {
 	}
 
 	render() {
-		const { loading, error, movies, totalResults } = this.state;
+		const { loading, error, movies, totalResults } = this.props;
 
 		const viewToRender =
 			loading && !error ? (
@@ -111,3 +83,16 @@ export default class App extends React.Component {
 		);
 	}
 }
+
+const mapStateToProps = ({ movies, error, loading, totalResults }) => {
+	return {
+		movies,
+		error,
+		loading,
+		totalResults
+	};
+};
+
+const mapDispatchToProps = { searchMovie };
+
+export default connect(mapStateToProps, mapDispatchToProps)(App);

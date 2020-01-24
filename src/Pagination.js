@@ -32,8 +32,6 @@ class Pagination extends React.Component {
 	render() {
 		const { totalResults } = this.props;
 
-		console.log(totalResults);
-
 		if (!totalResults) {
 			return null;
 		}
