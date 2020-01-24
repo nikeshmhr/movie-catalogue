@@ -31,6 +31,9 @@ const loadingReducer = (state = false, action) => {
 		case LOADING:
 			return action.payload.value;
 
+		case RECEIVE_MOVIES:
+			return false;
+
 		default:
 			return state;
 	}

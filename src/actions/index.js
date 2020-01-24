@@ -16,7 +16,6 @@ export const searchMovie = (searchTerm, pageNo = 1) => async dispatch => {
 		`http://www.omdbapi.com/?apikey=c32f98b8&type=movie&s=${searchTerm}&page=${pageNo}`
 	);
 	const json = await res.json();
-	dispatch(setLoading(false));
 	let movies = [];
 	let error = "";
 	let totalResults = 0;
