@@ -45,7 +45,7 @@ const setError = (error = "") => ({ type: SET_ERROR, payload: { error } });
 
 const setTotalResults = totalResults => ({
 	type: SET_TOTAL_RESULTS,
-	payload: { totalResults: totalResults }
+	payload: { totalResults }
 });
 
 const setLoading = value => ({
