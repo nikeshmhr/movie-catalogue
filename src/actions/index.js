@@ -13,7 +13,7 @@ export const searchMovie = (searchTerm, pageNo = 1) => async dispatch => {
 
 	// Call api to search movies
 	const res = await fetch(
-		`http://www.omdbapi.com/?apikey=c32f98b8&type=movie&s=${searchTerm}&page=${pageNo}`
+		`https://www.omdbapi.com/?apikey=c32f98b8&type=movie&s=${searchTerm}&page=${pageNo}`
 	);
 	const json = await res.json();
 	let movies = [];
